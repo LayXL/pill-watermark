@@ -9,9 +9,11 @@ const isIphone =
   typeof window !== "undefined" && window.navigator.userAgent.includes("iPhone")
 
 const minScreen =
-  typeof window !== "undefined" && Math.min(window.screen.height, window.screen.width) * window.devicePixelRatio
+  typeof window !== "undefined" &&
+  Math.min(window.screen.height, window.screen.width) * window.devicePixelRatio
 
-const calculatedOffset: Record<ScreenWidth, number> | false = typeof window !== "undefined" && {
+const calculatedOffset: Record<ScreenWidth, number> | false = typeof window !==
+  "undefined" && {
   1320: 43 / window.devicePixelRatio,
   1206: 43 / window.devicePixelRatio,
   1290: 35 / window.devicePixelRatio,
@@ -25,9 +27,9 @@ type PillWatermarkProps = {
 }
 
 export const PillWatermark = (props: PillWatermarkProps) => {
-  const offset = calculatedOffset && calculatedOffset[minScreen as ScreenWidth] as
-    | number
-    | undefined
+  const offset =
+    calculatedOffset &&
+    (calculatedOffset[minScreen as ScreenWidth] as number | undefined)
 
   if (!isIphone && !props.alwaysVisible) return
 
