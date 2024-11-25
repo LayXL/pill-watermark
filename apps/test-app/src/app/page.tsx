@@ -1,14 +1,14 @@
 import { SafeAreaInsetsInspector } from "@/shared/ui/safe-area-insets-inspector"
-import { IslandWatermark } from "pill-watermark"
+import { PillWatermark } from "pill-watermark"
 
 export default function Page() {
   return (
     <>
-      <IslandWatermark>
+      <PillWatermark>
         <div className="size-full rounded-full bg-emerald-600 grid place-items-center">
           Yep!
         </div>
-      </IslandWatermark>
+      </PillWatermark>
       <SafeAreaInsetsInspector />
     </>
   )
