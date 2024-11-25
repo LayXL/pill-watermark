@@ -1,8 +1,17 @@
 {
   "name": "pill-watermark",
-  "type": "module",
+  "version": "1.0.1",
+  "author": "layxl",
+  "scripts": {
+    "build": "tsup index.tsx --format cjs,esm --dts",
+    "dev": "tsup index.tsx --format cjs,esm --dts --watch"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "tsup": "^8.3.5"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
