@@ -1,5 +1,5 @@
 import { SafeAreaInsetsInspector } from "@/shared/ui/safe-area-insets-inspector"
-import { IslandWatermark } from "../../../../packages/pill-watermark"
+import { IslandWatermark } from "pill-watermark"
 
 export default function Page() {
   return (
