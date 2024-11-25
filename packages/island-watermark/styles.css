@@ -1,0 +1,32 @@
+.island-watermark-wrapper {
+  --offset: 4px;
+  --width: 124px;
+  --height: 36px;
+  position: fixed;
+  overflow: hidden;
+  width: 100lvw;
+  height: env(safe-area-inset-top);
+  touch-action: none;
+  pointer-events: none;
+}
+
+.island-watermark {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: var(--offset);
+  width: var(--width);
+  height: var(--height);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.island-watermark-wrapper.always-visible {
+  overflow: visible;
+}
+
+@media screen and (orientation: landscape) {
+  .island-watermark-wrapper:not(.always-visible) {
+    display: none;
+  }
+}
