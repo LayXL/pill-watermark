@@ -1,6 +1,7 @@
 {
   "name": "pill-watermark",
-  "version": "1.0.4",
+  "description": "Watermark for PWA apps on iPhone with Notch or Dynamic Island",
+  "version": "1.0.5",
   "author": "layxl",
   "scripts": {
     "build": "tsup",
@@ -9,6 +10,12 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LayXL/pill-watermark.git",
+    "directory": "packages/pill-watermark"
+  },
+  "license": "MIT",
   "devDependencies": {
     "@types/bun": "latest",
     "tsup": "^8.3.5"
