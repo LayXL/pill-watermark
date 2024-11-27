@@ -26,6 +26,10 @@ jobs:
         working-directory: ./apps/demo
         run: bun install
 
+      - name: Build package
+        working-directory: ./packages/pill-watermark
+        run: bun run build
+
       - name: Build project
         working-directory: ./apps/demo
         run: bun run build
