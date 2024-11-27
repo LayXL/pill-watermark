@@ -8,15 +8,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.0.0-beta.3",
+    "pill-watermark": "link:pill-watermark",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "pill-watermark": "link:pill-watermark"
+    "tailwindcss": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "vite": "^5.4.10",
-    "vite-plugin-pwa": "^0.21.0"
+    "vite-plugin-pwa": "^0.21.0",
+    "vite-plugin-svgr": "^4.3.0"
   }
 }

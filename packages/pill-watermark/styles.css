@@ -1,19 +1,29 @@
-.island-watermark-wrapper {
+.pill-watermark-wrapper {
   --offset: 4px;
   --width: 124px;
   --height: 36px;
-  position: fixed;
+  touch-action: none;
+  pointer-events: none;
+}
+
+.pill-watermark-wrapper:not(.disable-positioning) {
+  position: absolute;
   overflow: hidden;
+  top: 0;
+  left: 0;
   width: 100lvw;
   height: env(safe-area-inset-top);
   touch-action: none;
   pointer-events: none;
 }
 
-.island-watermark {
+.pill-watermark-wrapper:not(.disable-positioning) > div {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.pill-watermark {
   top: var(--offset);
   width: var(--width);
   height: var(--height);
@@ -21,12 +31,12 @@
   overflow: hidden;
 }
 
-.island-watermark-wrapper.always-visible {
+.pill-watermark-wrapper.always-visible {
   overflow: visible;
 }
 
 @media screen and (orientation: landscape) {
-  .island-watermark-wrapper:not(.always-visible) {
+  .pill-watermark-wrapper:not(.always-visible) {
     display: none;
   }
 }

@@ -6,6 +6,7 @@ import "./styles.css"
 type PillWatermarkProps = {
   children?: ReactNode
   alwaysVisible?: boolean
+  disablePositioning?: boolean
   customPaddingForNotch?: number
 }
 
@@ -47,6 +48,8 @@ export const PillWatermark = (props: PillWatermarkProps) => {
   }, [])
 
   const offset = useMemo(() => {
+    if (props.customPaddingForNotch) return props.customPaddingForNotch
+
     let offset = 0
 
     if (minScreen === 1320 || minScreen === 1206) offset = 43
@@ -59,8 +62,10 @@ export const PillWatermark = (props: PillWatermarkProps) => {
     if (minScreen === 1125 && insets.top === 51) offset = 31
     if (minScreen === 1125 && insets.top === 53) offset = 36
 
+    if (offset === 0) return 4
+
     return offset / pixelRatio
-  }, [minScreen, pixelRatio, insets.top])
+  }, [minScreen, pixelRatio, insets.top, props.customPaddingForNotch])
 
   const height = useMemo(() => {
     if (minScreen === 1320 || minScreen === 1206) return 36
@@ -72,6 +77,8 @@ export const PillWatermark = (props: PillWatermarkProps) => {
 
     if (minScreen === 1125 && insets.top === 51) return 31
     if (minScreen === 1125 && insets.top === 53) return 31
+
+    return 24
   }, [minScreen, insets.top])
 
   const width = useMemo(() => {
@@ -84,14 +91,20 @@ export const PillWatermark = (props: PillWatermarkProps) => {
 
     if (minScreen === 1125 && insets.top === 51) return 108
     if (minScreen === 1125 && insets.top === 53) return 100
+
+    return 92
   }, [minScreen, insets.top])
 
   const bakedClassNames = useMemo(
     () =>
-      ["pill-watermark-wrapper", props.alwaysVisible && "always-visible"]
+      [
+        "pill-watermark-wrapper",
+        (props.alwaysVisible || props.disablePositioning) && "always-visible",
+        props.disablePositioning && "disable-positioning",
+      ]
         .filter(Boolean)
         .join(" "),
-    [props.alwaysVisible]
+    [props.alwaysVisible, props.disablePositioning]
   )
 
   const bakedStyles = useMemo(
@@ -103,11 +116,11 @@ export const PillWatermark = (props: PillWatermarkProps) => {
     [offset, width, height, props.customPaddingForNotch]
   )
 
-  if (!isIphone && !props.alwaysVisible) return
+  if (!isIphone && !props.alwaysVisible && !props.disablePositioning) return
 
   return (
     <div className={bakedClassNames} style={bakedStyles}>
-      <div className={"island-watermark"} children={props.children} />
+      <div className={"pill-watermark"} children={props.children} />
     </div>
   )
 }
