@@ -18,6 +18,14 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Link deps
+        working-directory: ./packages/pill-watermark
+        run: bun link
+
+      - name: Link deps in demo app
+        working-directory: ./apps/demo
+        run: bun link pill-watermark
+
       - name: Install dependencies
         working-directory: ./apps/demo
         run: bun install
