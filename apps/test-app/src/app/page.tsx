@@ -1,5 +1,6 @@
 import { SafeAreaInsetsInspector } from "@/shared/ui/safe-area-insets-inspector"
 import { PillWatermark } from "pill-watermark"
+import "pill-watermark/styles.css"
 
 export default function Page() {
   return (
