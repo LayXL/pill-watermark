@@ -20,7 +20,7 @@ export default defineConfig({
         description: "Pill Watermark App",
         theme_color: "#ffffff",
         display: "standalone",
-        start_url: "/",
+        start_url: "/pill-watermark",
       },
     }),
   ],
