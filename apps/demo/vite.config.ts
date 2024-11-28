@@ -6,7 +6,7 @@ import { VitePWA } from "vite-plugin-pwa"
 import svgr from "vite-plugin-svgr"
 
 export default defineConfig({
-  base: "pill-watermark",
+  base: "/pill-watermark",
   plugins: [
     react(),
     tailwindcss(),
