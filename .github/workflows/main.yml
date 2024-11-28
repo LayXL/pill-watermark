@@ -22,32 +22,38 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Node
-        working-directory: ./packages/pill-watermark
-        uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 20
-          cache: 'yarn'
-      - name: Install dependencies
+          bun-version: latest
+
+      - name: Link deps
         working-directory: ./packages/pill-watermark
-        run: npm ci
-      - name: Build
-        working-directory: ./packages/pill-watermark
-        run: npm run build
+        run: bun link
+
       - name: Install dependencies
         working-directory: ./apps/demo
-        run: npm ci
-      - name: Build
+        run: bun install
+
+      - name: Build package
+        working-directory: ./packages/pill-watermark
+        run: bun run build
+
+      - name: Build project
         working-directory: ./apps/demo
-        run: npm run build
+        run: bun run build
+        
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './apps/demo/dist'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
