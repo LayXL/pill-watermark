@@ -41,7 +41,7 @@ jobs:
       - name: Upload production-ready build folder
         uses: actions/upload-artifact@v3
         with:
-          name: production-build
+          name: github-pages
           path: ./apps/demo/dist
 
   deploy:
@@ -55,7 +55,7 @@ jobs:
       - name: Download production-ready build folder
         uses: actions/download-artifact@v3
         with:
-          name: production-build
+          name: github-pages
 
       - name: Deploy to GitHub Pages
         id: deployment
